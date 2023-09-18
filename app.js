@@ -17,19 +17,57 @@ let subtract = document.querySelector('#sub')
 let addition = document.querySelector('#add')
 let decimal = document.querySelector('#dec')
 let equal = document.querySelector('#equal')
-
-console.log(screen.innerHTML)
+let leftNumber = ''
+let rightNumber = ''
+let sideSwitch = true
+let mainOperator = ''
+array = [zero, one, two, three, four, five, six, seven, eight, nine]
 //FUNCTIONS//
-
-const one1 = () => {
-    screen.innerHTML += 1
-}
 const screen1 = () => {
     screen.innerHTML = ''
+    leftNumber = ''
+    rightNumber = ''
+    mainOperator = ''
+    sideSwitch = true
 }
-
-
-//EVENTLISTENERS//
-
-one.addEventListener('click', one1)
+function mainButtons(num) {
+    screen.innerHTML += num
+    screen.innerHTML +- num
+    if (sideSwitch === true) {
+        leftNumber = leftNumber + num
+    } else {
+        rightNumber = rightNumber + num
+    }
+}
+function buttonOperators(bun) {
+    sideSwitch = false
+    mainOperator = bun
+}
+function equals() {
+    if (mainOperator === '/') {
+        screen.innerHTML = parseFloat(leftNumber)/parseFloat(rightNumber)
+    } else if (mainOperator === 'x') {
+        screen.innerHTML = parseFloat(leftNumber)*parseFloat(rightNumber)
+    } else if (mainOperator === '-') {
+        screen.innerHTML = parseFloat(leftNumber)-parseFloat(rightNumber)
+    } else if (mainOperator === '+') {
+        screen.innerHTML = parseFloat(leftNumber)+parseFloat(rightNumber)
+    }
+}
+//EVENTS//
+for (let i = 0; i < 10; i++) {
+        array[i].addEventListener('click', () => {mainButtons([i])})
+} 
 clear.addEventListener('click', screen1)
+decimal.addEventListener('click', () => {mainButtons('.')})
+equal.addEventListener('click', equals)
+divide.addEventListener('click', () => {mainButtons('/'); buttonOperators('/');})
+multiply.addEventListener('click', () => {mainButtons('x'); buttonOperators('x');})
+subtract.addEventListener('click', () => {mainButtons('-'); buttonOperators('-');})
+addition.addEventListener('click', () => {mainButtons('+'); buttonOperators('+');})
+
+
+
+
+
+
