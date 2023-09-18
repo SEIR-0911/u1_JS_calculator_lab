@@ -32,7 +32,7 @@ body {
     font-size: large;
     flex-grow: 3;
     background-color: white;
-    overflow: auto;
+    overflow: hidden;
 }
 #clear, #screen {
     height: 50px;
