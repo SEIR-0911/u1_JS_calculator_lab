@@ -1,4 +1,5 @@
 //VARIABLES//
+let allButtons = document.querySelectorAll('.buttons')
 let clear = document.querySelector('#clear')
 let screen = document.querySelector('#screen')
 let zero = document.querySelector('#zero')
@@ -21,7 +22,11 @@ let leftNumber = ''
 let rightNumber = ''
 let sideSwitch = true
 let mainOperator = ''
+let storage = false
 array = [zero, one, two, three, four, five, six, seven, eight, nine]
+
+console.log(allButtons[9].textContent)
+
 //FUNCTIONS//
 const screen1 = () => {
     screen.innerHTML = ''
@@ -29,14 +34,17 @@ const screen1 = () => {
     rightNumber = ''
     mainOperator = ''
     sideSwitch = true
+    storage = false
 }
 function mainButtons(num) {
     screen.innerHTML += num
     screen.innerHTML +- num
     if (sideSwitch === true) {
         leftNumber = leftNumber + num
+        console.log(leftNumber)
     } else {
         rightNumber = rightNumber + num
+        console.log(rightNumber)
     }
 }
 function buttonOperators(bun) {
@@ -45,22 +53,41 @@ function buttonOperators(bun) {
 }
 function equals() {
     if (mainOperator === '/') {
-        screen.innerHTML = parseFloat(leftNumber)/parseFloat(rightNumber)
+        screen.innerHTML = parseFloat(leftNumber)/(parseFloat(rightNumber))
+        // storage = true
+        // if (storage === true) {
+        //     leftNumber = parseFloat(leftNumber)/parseFloat(rightNumber)
+        // }
     } else if (mainOperator === 'x') {
         screen.innerHTML = parseFloat(leftNumber)*parseFloat(rightNumber)
+        // storage = true
+        // if (storage === true) {
+        //     leftNumber = parseFloat(leftNumber)*parseFloat(rightNumber)
+        // }
     } else if (mainOperator === '-') {
         screen.innerHTML = parseFloat(leftNumber)-parseFloat(rightNumber)
+        // storage = true
+        // if (storage === true) {
+        //     leftNumber = parseFloat(leftNumber)-parseFloat(rightNumber)
+        // }
     } else if (mainOperator === '+') {
         screen.innerHTML = parseFloat(leftNumber)+parseFloat(rightNumber)
+        // storage = true
+        // if (storage === true) {
+        //     leftNumber = parseFloat(leftNumber)+parseFloat(rightNumber)
+        // }
     }
 }
+subtract.addEventListener('click', () => {mainButtons('-'); buttonOperators('-');})
+
 //EVENTS//
+
 clear.addEventListener('click', screen1)
 decimal.addEventListener('click', () => {mainButtons('.')})
 equal.addEventListener('click', equals)
 divide.addEventListener('click', () => {mainButtons('/'); buttonOperators('/');})
 multiply.addEventListener('click', () => {mainButtons('x'); buttonOperators('x');})
-subtract.addEventListener('click', () => {mainButtons('-'); buttonOperators('-');})
+// subtract.addEventListener('click', () => {mainButtons('-'); buttonOperators('-');})
 addition.addEventListener('click', () => {mainButtons('+'); buttonOperators('+');})
 for (let i = 0; i < 10; i++) {
     array[i].addEventListener('click', () => {mainButtons([i])})
