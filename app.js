@@ -55,9 +55,6 @@ function equals() {
     }
 }
 //EVENTS//
-for (let i = 0; i < 10; i++) {
-        array[i].addEventListener('click', () => {mainButtons([i])})
-} 
 clear.addEventListener('click', screen1)
 decimal.addEventListener('click', () => {mainButtons('.')})
 equal.addEventListener('click', equals)
@@ -65,6 +62,55 @@ divide.addEventListener('click', () => {mainButtons('/'); buttonOperators('/');}
 multiply.addEventListener('click', () => {mainButtons('x'); buttonOperators('x');})
 subtract.addEventListener('click', () => {mainButtons('-'); buttonOperators('-');})
 addition.addEventListener('click', () => {mainButtons('+'); buttonOperators('+');})
+for (let i = 0; i < 10; i++) {
+    array[i].addEventListener('click', () => {mainButtons([i])})
+} 
+for (let i = 0; i < 10; i++) {
+    document.body.addEventListener('keydown', (ev) => {
+    let keyss = i.toString()
+    if (ev.key === keyss)
+        mainButtons([i])})
+} 
+document.body.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter') {
+        equals();
+    }
+})
+document.body.addEventListener('keydown', (ev) => {
+    if(ev.key === 'Backspace') {
+        screen1()
+    }
+})
+document.body.addEventListener('keydown', (ev) => {
+    if(ev.key === '/') {
+        mainButtons('/');
+        buttonOperators('/');
+    }
+})
+document.body.addEventListener('keydown', (ev) => {
+    if(ev.key === '*') {
+        mainButtons('x');
+        buttonOperators('x');
+    }
+})
+document.body.addEventListener('keydown', (ev) => {
+    if(ev.key === '-') {
+        mainButtons('-');
+        buttonOperators('-');
+    }
+})
+document.body.addEventListener('keydown', (ev) => {
+    if(ev.key === '+') {
+        mainButtons('+');
+        buttonOperators('+');
+    }
+})
+document.body.addEventListener('keydown', (ev) => {
+    if(ev.key === '.') {
+        mainButtons('.');
+        buttonOperators('.');
+    }
+})
 
 
 
