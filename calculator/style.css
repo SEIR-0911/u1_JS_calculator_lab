@@ -1,0 +1,46 @@
+#calc {
+    height:600px;
+    width: 400px;
+    display:flex;
+    flex-direction: column;
+    background-color: red;
+    font-size: 100px;
+}
+
+.row {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+  }
+  .column {
+    flex: auto; 
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+
+    }
+/* #top {
+    display: inline;
+} */
+#screen {
+    background-color: grey;
+    font-size: 30px;
+}
+#ac {
+    width: 0%;
+}
+
+/* .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .column {
+    flex-basis: 50%;
+  }
+   */
+
+ div {
+    border: 1px solid black;
+}
