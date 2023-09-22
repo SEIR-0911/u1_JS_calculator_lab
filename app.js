@@ -1,3 +1,5 @@
+//VARIABLES
+//----Create JS-specific & DOM variables.  Initialize. 
 const Output = document.querySelector("#outputText")
 
 let numInput = ""
@@ -8,31 +10,39 @@ let operatorCount = 0
 
 Output.innerText = ""
 
+//FUNCTIONS
+//-----Function to evaluate & perform math equation based on the user-input operator string.  
+function doTheMath(mathSignVar) {
+    if (mathSignVar === "+"){
+        leftSide = leftSide + rightSide
+        return leftSide
+    } else if (mathSignVar === "-") {
+        leftSide = leftSide - rightSide
+        return leftSide
+    } else if (mathSignVar === "*") {
+        leftSide = leftSide * rightSide
+        return leftSide
+    } else {
+        leftSide = leftSide / rightSide
+        return leftSide
+    }
+}
+
+//EVENT LISTENERS
+//----Event listener uses event objects to map to data values.  Math operations are then performed with the user-input values.
 document.querySelector(".container").onclick = function(e) {
     if ((e.target.id) === "1" || (e.target.id) === "2" || (e.target.id) === "3" || (e.target.id) === "4" || (e.target.id) === "5" || (e.target.id) === "6" || (e.target.id) === "7" || (e.target.id) === "8" || (e.target.id) === "9" || (e.target.id) === "0") {
         numInput+=(e.target.id)
         console.log(numInput)
-        //** POPULATE NUMINPUT TO HTML OUTPUT */
         Output.innerText = numInput
+
     } else if ((e.target.id) === "+" || (e.target.id) === "-" || (e.target.id)=== "*" || (e.target.id)=== "/") {
         operatorCount = operatorCount + 1
         if (operatorCount > 1 ) {
             rightSide = parseInt(numInput)
-            
-            // Ready to evaluate your expression and set it to leftSide, then set rightSide to 0.
-            if (operator === "+"){
-                leftSide = leftSide + rightSide
-            } else if (operator === "-") {
-                leftSide = leftSide -rightSide
-            } else if (operator === "*") {
-                leftSide = leftSide * rightSide
-            } else {
-                leftSide = leftSide / rightSide
-            }
-
+            doTheMath(operator)
             rightSide = 0
             operator = (e.target.id)
-
         } else {
             operator = (e.target.id)
             leftSide = parseInt(numInput)
@@ -41,20 +51,11 @@ document.querySelector(".container").onclick = function(e) {
         
     } else if ((e.target.id) === "=" ){
         rightSide=parseInt(numInput)
-        if (operator === "+"){
-            leftSide = leftSide + rightSide
-        } else if (operator === "-") {
-            leftSide = leftSide -rightSide
-        } else if (operator === "*") {
-            leftSide = leftSide * rightSide
-        } else {
-            leftSide = leftSide / rightSide
-        }
-        console.log(leftSide)
+        doTheMath(operator)
         numInput = ""
-        Output.innerText = leftSide
-        //**POPULATE leftSide TO HTML CALC
-        
+        Output.innerText = leftSide.toString()
+    
+    //----Final else statement resets the variable values when the user clicks "CLR" button.
     } else {
         numInput = ""
         leftSide = 0
@@ -63,8 +64,5 @@ document.querySelector(".container").onclick = function(e) {
         operatorCount = 0
 
         Output.innerText = ""
-        
-        /**POPULATE LS TO HTML CALC */
-        console.log("clear")
     }
 }
