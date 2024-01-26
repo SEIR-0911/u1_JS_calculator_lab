@@ -1,4 +1,4 @@
-## SEIR 0911EC
+## SEBR0116
 
 # Calculator
 
@@ -72,7 +72,7 @@ div {
 
 2. When the user clicks a button, how are you going to get which number or operation they clicked? When they click a certain button, what code are you going to have to run?
 
-3. Try not to use a separate event handler for each button. With `$(event.currentTarget)` you could use just one event handler for the numbers by grabbing the text from the clicked element.
+3. Try not to use a separate event handler for each button. What could you use for the numbers to by grab the value from the clicked element?
 
 
 ## More
